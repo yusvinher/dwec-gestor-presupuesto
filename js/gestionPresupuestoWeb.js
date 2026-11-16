@@ -87,6 +87,33 @@ function mostrarGastoWeb(idElemento, gasto) {
         "click",
         borrarHandle
     );
+ // BOTON EDITAR FORMULARIO
+
+    // EDITAR FORMULARIO
+
+    let botonEditarformulario =
+        document.createElement("button");
+
+    botonEditarformulario.type =
+        "button";
+
+    botonEditarformulario.classList.add(
+        "gasto-editar-formulario"
+    );
+
+    botonEditarformulario.textContent =
+        "Editar (formulario)";
+
+    let editarFormulario =
+        new EditarHandleformulario();
+
+    editarFormulario.gasto =
+        gasto;
+
+    botonEditarformulario.addEventListener(
+        "click",
+        editarFormulario
+    );
 
     divGasto.append(
         descripcion,
@@ -94,7 +121,8 @@ function mostrarGastoWeb(idElemento, gasto) {
         valor,
         etiquetas,
         botonEditar,
-        botonBorrar
+        botonBorrar,
+        botonEditarformulario
     );
 
     contenedor.append(divGasto);
@@ -377,6 +405,8 @@ function nuevoGastoWebFormulario(event) {
             anyadirGasto(gasto);
 
             repintar();
+                
+            formulario.remove();
 
             document
                 .getElementById(
@@ -412,7 +442,11 @@ function nuevoGastoWebFormulario(event) {
         "disabled",
         true
     );
-
+// Insertar formulario
+    document
+        .getElementById( 
+            "controlesprincipales")
+        .append( plantillaFormulario );
 
 
 }
