@@ -323,3 +323,13 @@ function () {
 
     repintar();
 };
+
+function nuevoGastoWebFormulario(event) {
+
+    // Clonar la plantilla
+    let plantillaFormulario = document.getElementById(
+            "formulario-template"
+        ).content.cloneNode(true);
+
+        
+}
