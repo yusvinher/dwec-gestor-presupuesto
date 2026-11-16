@@ -387,6 +387,32 @@ function nuevoGastoWebFormulario(event) {
                 );
         }
     );
+    // Botón cancelar
+    let botonCancelar =
+        formulario.querySelector(
+            "button.cancelar"
+        );
+
+    let manejadorCancelar =
+        new CancelarHandleFormulario();
+
+    manejadorCancelar.formulario =
+        formulario;
+
+    manejadorCancelar.boton =
+        event.currentTarget;
+
+    botonCancelar.addEventListener(
+        "click",
+        manejadorCancelar
+    );
+
+    // Desactivar botón principal
+    event.currentTarget.setAttribute(
+        "disabled",
+        true
+    );
+
 
 
 }
