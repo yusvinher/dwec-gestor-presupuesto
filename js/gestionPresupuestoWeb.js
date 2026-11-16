@@ -328,8 +328,65 @@ function nuevoGastoWebFormulario(event) {
 
     // Clonar la plantilla
     let plantillaFormulario = document.getElementById(
-            "formulario-template"
-        ).content.cloneNode(true);
+            "formulario-template").content.cloneNode(true);
 
-        
+    // Agregar el formulario al contenedor
+
+    //  Acceder al elemento `<form>` dentro de ese fragmento de documento. 
+    let formulario = plantillaFormulario.querySelector( "form");
+
+
+    // Evento submit
+    formulario.addEventListener(
+        "submit",
+        function(event){
+
+            event.preventDefault();
+
+            let formulario =
+                event.currentTarget;
+
+            let descripcion =
+                formulario.descripcion.value;
+
+            let valor =
+                Number(
+                    formulario.valor.value
+                );
+
+            let fecha =
+                formulario.fecha.value;
+
+            let etiquetas =
+                formulario.etiquetas.value;
+
+            let listaEtiquetas =
+                etiquetas
+                    .split(",")
+                    .map(etiqueta => etiqueta.trim())
+                    .filter(etiqueta => etiqueta !== "");
+
+            let gasto =
+                new CrearGasto(
+                    descripcion,
+                    valor,
+                    fecha,
+                    ...listaEtiquetas
+                );
+
+            anyadirGasto(gasto);
+
+            repintar();
+
+            document
+                .getElementById(
+                    "anyadirgasto-formulario"
+                )
+                .removeAttribute(
+                    "disabled"
+                );
+        }
+    );
+
+
 }
