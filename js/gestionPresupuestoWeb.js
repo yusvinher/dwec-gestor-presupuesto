@@ -116,7 +116,7 @@ titulo.textContent =`Gastos agrupados por ${textoPeriodo}`;
 
     divAgrupacion.append(titulo);
 
-         for (let prop in agrup) {
+         for (let clave in agrup) {
 
         let dato = document.createElement("div");
         dato.classList.add("agrupacion-dato");
@@ -127,7 +127,7 @@ titulo.textContent =`Gastos agrupados por ${textoPeriodo}`;
 
         let spanValor = document.createElement("span");
         spanValor.classList.add("agrupacion-dato-valor");
-        spanValor.textContent = valor;
+        spanValor.textContent = agrup[clave];
 
         dato.append(spanClave);
         dato.append(spanValor);
